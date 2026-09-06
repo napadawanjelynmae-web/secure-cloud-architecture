@@ -1,28 +1,315 @@
+```html
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Student Management System</title>
-</head>
-<body>
-    <h1>Student Management System</h1>
-    <button>Login</button>
+<html lang="en">
 
-    <h2>Student Records</h2>
-    <table border="1">
-        <tr>
-            <th>Student No.</th>
-            <th>Name</th>
-            <th>Course</th>
-            <th>Year Level</th>
-            <th>Email</th>
-        </tr>
-        <tr>
-            <td>2026-001</td>
-            <td>Juan Dela Cruz</td>
-            <td>BSIT</td>
-            <td>2nd Year</td>
-            <td>juan@example.com</td>
-        </tr>
-    </table>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Management System</title>
+
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fb;
+            color: #333;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 18px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #1e3a8a;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #666;
+        }
+
+        /* Login Button */
+        .login-btn {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* Student Records Card */
+        .records-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .records-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .records-header h2 {
+            color: #1e3a8a;
+        }
+
+        .add-btn {
+            background-color: #16a34a;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .add-btn:hover {
+            background-color: #15803d;
+        }
+
+        /* Table */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 14px;
+            text-align: left;
+        }
+
+        td {
+            padding: 14px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        /* Status */
+        .status {
+            background-color: #dcfce7;
+            color: #166534;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+            color: #777;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 700px) {
+
+            .navbar {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .login-btn {
+                width: 100%;
+            }
+
+            .records-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            🎓 Student Management
+        </div>
+
+        <div class="nav-links">
+            <a href="#">Dashboard</a>
+            <a href="#">Students</a>
+            <a href="#">Courses</a>
+            <a href="#">About</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- Welcome Header -->
+        <section class="header">
+
+            <div>
+                <h1>Student Management System</h1>
+                <p>Manage and view student records easily.</p>
+            </div>
+
+            <button class="login-btn">
+                Login
+            </button>
+
+        </section>
+
+        <!-- Student Records -->
+        <section class="records-card">
+
+            <div class="records-header">
+                <h2>Student Records</h2>
+
+                <button class="add-btn">
+                    + Add Student
+                </button>
+            </div>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Student No.</th>
+                            <th>Name</th>
+                            <th>Course</th>
+                            <th>Year Level</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>2026-001</td>
+                            <td>Juan Dela Cruz</td>
+                            <td>BSIT</td>
+                            <td>2nd Year</td>
+                            <td>juan@example.com</td>
+                            <td>
+                                <span class="status">Active</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>2026-002</td>
+                            <td>Maria Santos</td>
+                            <td>BSCS</td>
+                            <td>3rd Year</td>
+                            <td>maria@example.com</td>
+                            <td>
+                                <span class="status">Active</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>2026-003</td>
+                            <td>Pedro Reyes</td>
+                            <td>BSIT</td>
+                            <td>1st Year</td>
+                            <td>pedro@example.com</td>
+                            <td>
+                                <span class="status">Active</span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        © 2026 Student Management System. All Rights Reserved.
+    </footer>
+
 </body>
+
 </html>
+```
